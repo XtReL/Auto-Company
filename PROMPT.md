@@ -66,3 +66,15 @@
 4. **Cycle 2 之后每轮必须产出实物**（文件、repo、部署），纯讨论禁止
 5. **同一个 Next Action 连续出现 2 轮** → 卡住了，换方向或缩范围直接 ship
 6. **凡是前端交付**（页面、界面、组件、dashboard、marketing site）→ 必须先使用 `frontend-design.md`，确保视觉与交互质量，不允许用通用默认风格直接输出
+
+CURRENT CONSENSUS (IRP TELEGRAM BOT)
+Project: IRP Telegram Bot (Stateless Reset)
+Target: Монетизация трафика через прием текстовых логов состояния и возврат дебаг-ответов.
+Architecture:
+- Direct Bot API (строго без Web-фронтенда и TMA).
+- Интеграция Telegram Stars для paywall (возврат ответа только после оплаты).
+- Парсинг сообщений пользователя через LLM-API, возврат типизированного JSON.
+- Инфраструктура: Cloudflare Workers.
+Strict Constraints:
+- Запрещено использовать БД (PostgreSQL/MongoDB). Только stateless-логика.
+- Запрещены внешние платежки (Stripe/Tinkoff). Только Telegram Stars.
